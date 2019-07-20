@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "959738574518",
+    "firebase_url": "https://chat-smartpro.firebaseio.com",
+    "project_id": "chat-smartpro",
+    "storage_bucket": "chat-smartpro.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:959738574518:android:9666f7cc354bae75",
+        "android_client_info": {
+          "package_name": "com.c4f.firebase_chat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "959738574518-d7cpng4rmo4cq7tvr2b3gmd8u35b3vf5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkGUGXa84BjPfRRi88xe_C26VbT96kfm4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "959738574518-d7cpng4rmo4cq7tvr2b3gmd8u35b3vf5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
