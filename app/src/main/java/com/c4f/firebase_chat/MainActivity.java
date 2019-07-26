@@ -1,6 +1,7 @@
 package com.c4f.firebase_chat;
 
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -31,6 +32,12 @@ public class MainActivity extends AppCompatActivity {
     public void changeFragment(Fragment fragment) {
         if (fragment instanceof ChatFragment) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onBackPressed();
+                }
+            });
         }
 
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
