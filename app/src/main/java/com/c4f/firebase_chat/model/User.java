@@ -2,7 +2,9 @@ package com.c4f.firebase_chat.model;
 
 import androidx.annotation.Nullable;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
     private int id;
     private String displayName;
     private String email;

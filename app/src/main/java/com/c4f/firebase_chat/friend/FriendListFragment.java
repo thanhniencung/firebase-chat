@@ -28,6 +28,7 @@ public class FriendListFragment extends Fragment {
 
     private FriendListViewModel viewModel;
     private FriendAdapter adapter;
+    private User me;
 
     public static FriendListFragment newInstance() {
         return new FriendListFragment();
@@ -81,8 +82,9 @@ public class FriendListFragment extends Fragment {
     void onUserResponse() {
         viewModel.getUserResponse().observe(this, new Observer<User>() {
             @Override
-            public void onChanged(User value) {
-                adapter.setMe(value);
+            public void onChanged(User user) {
+                me = user;
+                adapter.setMe(user);
             }
         });
     }
@@ -103,6 +105,6 @@ public class FriendListFragment extends Fragment {
     public void onFriendClicked(ClickFriendEvent event) {
         ((MainActivity) getActivity()).changeTitle(event.getFriend());
         ((MainActivity) getActivity())
-                .changeFragment(ChatFragment.newInstance(event.getRoomId()));
+                .changeFragment(ChatFragment.newInstance(event.getRoomId(), me));
     }
 }

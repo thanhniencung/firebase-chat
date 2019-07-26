@@ -30,11 +30,13 @@ public class ChatFragment extends Fragment {
     private EditText editText;
 
     private String roomId;
+    private User me;
 
-    public static ChatFragment newInstance(String roomId) {
+    public static ChatFragment newInstance(String roomId, User me) {
         ChatFragment chatFragment = new ChatFragment();
         Bundle bundle = new Bundle();
         bundle.putString("ROOM_ID", roomId);
+        bundle.putSerializable("ME", me);
         chatFragment.setArguments(bundle);
         return chatFragment;
     }
@@ -53,6 +55,7 @@ public class ChatFragment extends Fragment {
         adapter = new MessageAdapter();
 
         roomId = getArguments().getString("ROOM_ID");
+        me = (User) getArguments().getSerializable("ME");
 
         editText = view.findViewById(R.id.chatBox);
         recyclerView = view.findViewById(R.id.recyclerView);
@@ -74,11 +77,7 @@ public class ChatFragment extends Fragment {
 
                 Message message = new Message();
                 message.setContent(content);
-
-                User owner = new User();
-                owner.setDisplayName("Ryan");
-                owner.setEmail("ryan@gmail.com");
-                message.setOwner(owner);
+                message.setOwner(me);
 
                 viewModel.sendMessage(roomId, message);
             }

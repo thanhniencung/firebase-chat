@@ -171,7 +171,8 @@ public class NodeManager implements Node {
         });
     }
 
-    public void listenerNewMessage(String roomId, long startAt, final NodeCallback callback) {
+    public void listenerNewMessage(String roomId, long startAt,
+                                   final NodeCallback callback) {
         DatabaseReference friendsRef = FirebaseDatabase.getInstance()
                 .getReference()
                 .child("messages")

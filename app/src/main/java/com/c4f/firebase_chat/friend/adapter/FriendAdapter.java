@@ -43,7 +43,7 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.MyViewHold
                 public void onClick(View v) {
                     User friend = friends.get(getAdapterPosition());
                     String roomId = buildRoomId(me.getId(), friend.getId());
-                    EventBus.getDefault().post(new ClickFriendEvent(roomId, friend.getDisplayName()));
+                    EventBus.getDefault().post(new ClickFriendEvent(roomId, friend.getDisplayName(), me));
                 }
             });
         }

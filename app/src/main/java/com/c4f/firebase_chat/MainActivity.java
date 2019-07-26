@@ -5,8 +5,10 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.c4f.firebase_chat.chat.ChatFragment;
 import com.c4f.firebase_chat.friend.FriendListFragment;
 
 // https://firebase.google.com/docs/android/setup
@@ -27,15 +29,29 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void changeFragment(Fragment fragment) {
+        if (fragment instanceof ChatFragment) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
         transaction.add(R.id.container, fragment);
-        transaction.addToBackStack(fragment.getClass().getName());
+        if (!(fragment instanceof FriendListFragment)) {
+            transaction.addToBackStack(fragment.getClass().getName());
+        }
 
         transaction.commit();
     }
 
     public void changeTitle(String title) {
         toolbar.setTitle(title);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (getFragmentManager().getBackStackEntryCount() == 0) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        }
+        super.onBackPressed();
     }
 }
